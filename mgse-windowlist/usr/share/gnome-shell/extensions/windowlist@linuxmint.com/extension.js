@@ -91,6 +91,7 @@ AppMenuButtonRightClickMenu.prototype = {
 
     _onCloseWindowActivate: function(actor, event){
         this.metaWindow.delete(global.get_current_time());
+        this.destroy();
     },
 
     _onMinimizeWindowActivate: function(actor, event){
@@ -348,7 +349,8 @@ AppMenuButton.prototype = {
             this.rightClickMenu.mouseEvent = event;
             this.rightClickMenu.toggle();   
         } else if (Shell.get_event_state(event) & Clutter.ModifierType.BUTTON2_MASK) {
-	    this.metaWindow.delete(global.get_current_time());
+            this.metaWindow.delete(global.get_current_time());
+            this.rightClickMenu.destroy();
         } 
     },
 
